@@ -1,0 +1,117 @@
+%BEGIN_FOLD
+% !TeX document-id = {7ed1036c-f6fe-486f-b58e-dfc79e34db3a}
+% !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
+
+\documentclass[inzynier,druk]{dyplom}
+%\documentclass[magister,archiwum]{dyplom}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+%%
+\usepackage[toc]{appendix}
+\renewcommand{\appendixtocname}{Dodatki}
+\renewcommand{\appendixpagename}{Dodatki}
+
+% pakiet do składu listingów w razie potrzeby można odblokować możliwość numerowania linii lub zmienić wielkość czcionki w listingu
+\usepackage{minted}
+\setminted{breaklines,
+frame=lines,
+framesep=5mm,
+baselinestretch=1.1,
+fontsize=\small,
+%linenos
+}
+
+% nowe otoczenie do składania listingów
+\usepackage{float}
+\newfloat{listing}{htp}{lop}
+\floatname{listing}{Listing}
+\usepackage{chngcntr}
+\counterwithin{listing}{chapter}
+
+% patch wyrównujący spis listingów do lewego marginesu 
+%https://tex.stackexchange.com/questions/58469/why-are-listof-and-listoffigures-styled-differently
+\makeatletter
+\renewcommand*{\listof}[2]{%
+  \@ifundefined{ext@#1}{\float@error{#1}}{%
+    \expandafter\let\csname l@#1\endcsname \l@figure  % <- use layout of figure
+    \float@listhead{#2}%
+    \begingroup
+      \setlength\parskip{0pt plus 1pt}%               % <- or drop this line completely
+      \@starttoc{\@nameuse{ext@#1}}%
+    \endgroup}}
+\makeatother
+
+\usepackage{url}
+\usepackage{lipsum}
+
+%END_FOLD
+
+% Dane o pracy
+\author{Mateusz Gawłowski}
+\title{Projekt i implementacja modułu ekstrakcji podsumowań danych w systemie autonomicznym}
+\titlen{Design and implementation of a module for extraction of data summaries by an autonomus system}
+\promotor{dr hab. inż. Radosław Katarzyniak, prof. uczelni}
+%\konsultant{dr hab. inż. Kazimerz Kabacki}
+\wydzial{Wydział Informatyki i Zarządzania}
+\kierunek{Informatyka}
+\krotkiestreszczenie{W pracy przedstawiono projekt oraz implementację modułu zarządzania pamięcią semantyczną w gotowej aplikacji programowego agenta rozwiązującego zadanie generowania podsumowań lingwistycznych w postaci modalnych zdań reprezentujących wiedzę agenta o stanie obiektu ulokowanego w świecie rzeczywistym. Przedstawiono przykład działania agenta.}
+\slowakluczowe{agent wbudowany,	agent kognitywny, pamięć semantyczna, ekstrakcja podsumowań danych}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+%\listoffigures
+
+%\listof{listing}{Spis listingów}
+
+%\listoftables
+
+% --- Strona ze streszczeniem i abstraktem ------------------------------------------------------------------
+\chapter*{Streszczenie} % po polsku
+% Wprowadzenie
+<streszczenie>
+
+
+% Kilka sztuczek, żeby:
+% - Abstract pojawił się na tej samej stronie co Streszczenie
+% - Abstract nie pojawił się w spisie treści
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\chapter*{Abstract} % ...i to samo po angielsku
+
+<ang. streszczenie>
+
+\endgroup
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+% --- Koniec strony ze streszczeniem i abstraktem -----------------------------------------------------------
+
+% Rozdziały dołączone z zewnątrz
+\input{wstep}
+\input{rozdzial1}
+\input{rozdzial2}
+\input{rozdzial3}
+\input{rozdzial4}
+\input{rozdzial5}
+\input{zakonczenie}
+
+%\appendixpage
+%\appendix
+%%\addappheadtotoc
+
+%\chapter{To powinien być dodatek}\label{Dod1}
+
+%\lipsum[9-11]
+
+% W pracy pojawią się tylko prace naprawdę cytowane.
+% \nocite{*}
+
+\bibliography{literatura}
+\bibliographystyle{dyplom}
+
+\end{document}
