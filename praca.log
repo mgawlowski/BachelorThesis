@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6880 64-bit) (preloaded format=pdflatex 2018.12.17)  17 DEC 2018 12:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6880 64-bit) (preloaded format=pdflatex 2018.12.17)  28 DEC 2018 00:57
 entering extended mode
 **./praca.tex
 (praca.tex
@@ -1201,28 +1201,28 @@ runsystem(del praca.aex)...executed.
 (praca.aux)
 \openout1 = `praca.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 61.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 60.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    ... okay on input line 60.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1285,7 +1285,7 @@ G,.JBIG2,.JB2,.eps]
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 ABD: EveryShipout initializing macros
-LaTeX Info: Redefining \microtypecontext on input line 61.
+LaTeX Info: Redefining \microtypecontext on input line 60.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1300,7 +1300,7 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 \AtBeginShipoutBox=\box76
-Package hyperref Info: Link coloring OFF on input line 61.
+Package hyperref Info: Link coloring OFF on input line 60.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1310,9 +1310,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count347
 )
-LaTeX Info: Redefining \ref on input line 61.
-LaTeX Info: Redefining \pageref on input line 61.
-LaTeX Info: Redefining \nameref on input line 61.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
 
 (praca.out) (praca.out)
 \@outlinefile=\write7
@@ -1355,7 +1355,7 @@ LaTeX Info: Redefining \nameref on input line 61.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 63.
+LaTeX Font Info:    Try loading font information for U+msa on input line 62.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1363,7 +1363,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msa.cfg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 63.
+LaTeX Font Info:    Try loading font information for U+msb on input line 62.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1372,27 +1372,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 Package scrextend Info: File `scrsize10pt.clo' used to setup font sizes on inpu
-t line 63.
+t line 62.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrsize10pt.clo"
 File: scrsize10pt.clo 2018/03/30 v3.25 KOMA-Script font size class option (10pt
 )
 )
-Overfull \hbox (22.82349pt too wide) in paragraph at lines 63--63
+Overfull \hbox (22.82349pt too wide) in paragraph at lines 62--62
  []|[]| 
  []
 
 
-Overfull \vbox (3.72298pt too high) detected at line 63
+Overfull \vbox (3.72298pt too high) detected at line 62
  []
 
 Package scrextend Info: File `scrsize10pt.clo' used to setup font sizes on inpu
-t line 63.
+t line 62.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrsize10pt.clo"
 File: scrsize10pt.clo 2018/03/30 v3.25 KOMA-Script font size class option (10pt
 )
 )
-Overfull \hbox (22.82349pt too wide) in paragraph at lines 63--63
+Overfull \hbox (22.82349pt too wide) in paragraph at lines 62--62
  []|[]| 
  []
 
@@ -1436,43 +1436,36 @@ Rozdzia\PlPrIeC {\l } 5.
 ]) (praca.bbl [9
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 10.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
+LaTeX Warning: Empty `thebibliography' environment on input line 3.
+
 ) [10
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 117.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 117.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
  (praca.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 117.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 117.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 116.
 Package rerunfilecheck Info: File `praca.out' has not changed.
 (rerunfilecheck)             Checksum: 972075EB96C7627F8CE7F5EED3213BDE;2036.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 117.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
  ) 
 Here is how much of TeX's memory you used:
- 33294 strings out of 492969
- 626402 string characters out of 3135846
- 985422 words of memory out of 3000000
- 36543 multiletter control sequences out of 15000+200000
- 579109 words of font info for 86 fonts, out of 3000000 for 9000
+ 33246 strings out of 492969
+ 625311 string characters out of 3135846
+ 985213 words of memory out of 3000000
+ 36517 multiletter control sequences out of 15000+200000
+ 575252 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,14n,71p,450b,1610s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Mateo\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-ectt1095.pk>{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/tex-gyre/q-ec.enc}<C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/tex-gyre/qtmb.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/tex-gyre/qtmr.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/tex-gyre/qtmri.pfb>
-Output written on praca.pdf (11 pages, 145636 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/tex-gyre/q-ec.enc}<C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/tex-gyre/qtmb.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/tex-gyre/qtmr.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/tex-gyre/qtmri.pfb>
+Output written on praca.pdf (11 pages, 130005 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 20237 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 17677 words of extra memory for PDF output out of 20736 (max. 10000000)
 
