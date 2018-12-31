@@ -3,9 +3,16 @@ _minted-praca/
 *.bbl
 *.blg
 *.lof
+*.log
 *.lop
 *.lot
 *.out
-*.synctex(busy)
 *.toc
 *.pdf
+
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
