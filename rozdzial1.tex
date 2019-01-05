@@ -1,13 +1,44 @@
-\chapter{Stan wiedzy i techniki w zakresie tematyki pracy}
+\chapter{Podstawy teoretyczne w zakresie tematyki pracy}
 
-<tekst>
+Tematyka pracy dotyczy dziedziny, która w literaturze określana jest terminem obliczeń kognitywnych (ang. \textit{cognitive computing}). Obejmuje ona inteligentne modele i metody obliczeniowe, które wyznaczają kierunek dalszego rozwoju systemów tzw. inteligencji wbudowanej oraz środowisk inteligentnych \cite{hur15}.
+
+Podstawą wspomnianej dziedziny jest upodabnianie funkcjonowania oprogramowania lub sprzętu do działania ludzkiego mózgu. Współczesne rozwiązania (takie jak  Watson \cite{kel13}) korzystają z wielu zaawansowanych narzędzi do analizy i przetwarzania danych --- m. in. uczenie maszynowe, przetwarzanie języka naturalnego. Symulują w ten sposób działanie mózgu w oparciu o duże zbiory danych, by w przyszłości podejmować nawet istotne decyzje medyczne \cite{woo15}. Takie podejście ignoruje jednak poznawczą naturę działania mózgu, skupiając się przede wszystkim na satysfakcjonujących rezultatach, a nie próbach wiernego oddaniu sposobu w jaki funkcjonuje mózg, procesów myślowych i poznawczych.
+
+W odróżnieniu od wspomnianego podejścia rozwiązania zastosowane w aplikacji należą do obszaru określanego jako lingwistyka kognitywna. Tym samym pozostają w większym stopniu związane z pojęciem kognitywistyki samym w sobie. Jest to interdyscyplinarna dziedzina nauki z pogranicza m. in. filozofii, psychologii, sztucznej inteligencji i lingwistyki (określana także jako nauki kognitywne, poznawcze). Dotyczy ona obserwacji i analizy działania zmysłów, mózgu i umysłu oraz ich modelowania \cite{tha17}.
+
+W pracy, a także w całej aplikacji zaproponowana została oryginalna semantyka kognitywna. Pozostaje ona w zgodzie z ogólnie przyjętymi teoriami modalnego języka komunikacji \cite{tal00}, będących częścią lingwistyki kognitywnej. Zaproponowana implementacja systemu kognitywnego agenta jest w ścisłej relacji z formalną teorią kognitywną zaprezentowaną w \cite{kat07}. Zauważa się jednak brak publikacji bezpośrednio powiązanych z realizowanym systemem agentowym.
+
+W dalszej części tego rozdziału zawarto podstawowe wprowadzenie teoretyczne przybliżające zagadnienia i modele, na których opiera się aplikacja agenta oraz opracowany moduł zarządzania pamięcią semantyczną. Przedstawiono przede wszystkim te elementy projektowanego systemu agentowego (agenta i jego otoczenia), które są bezpośrednio powiązane z nowym modułem: model zewnętrznego względem agenta świata rzeczywistego i~objętego jego działaniem obserwacyjnym, model enkapsulowanej (prywatnej) epizodycznej bazy wiedzy służącej do przechowywania pojedynczych obserwacji świata zewnętrznego oraz model semantycznej wiedzy agenta opartej na koncepcji holonów, jako oryginalne rozszerzenie reprezentujące wynik ekstrakcji podsumowań danych.
+
+Szczegółowy opis wszystkich zagadnień i poszczególnych składowych opracowanego modelu można znaleźć w raporcie dotyczącym wspomnianej aplikacji \cite{raport}.
+
+\section{Model świata}   % zewnętrznego świata rzeczywistego
+
+Zewnętrznym światem rzeczywistym S projektowanego agenta jest dla niego otoczenie, w którym został umieszczony, i który objęty jest przez niego aktywnością obserwacyjną. Przedmiotem obserwacji są obiekty umieszczone w świecie S.
+
+Świat zbudowany jest z atomowych obiektów --- są to proste obiekty, dla których możliwe jest zdefiniowanie zbioru cech jakimi się charakteryzują. Ograniczenie modelu wyłącznie do obiektów atomowych, w przeciwieństwie do świata, który naprawdę składa się z krotek obiektów atomowych, które reprezentują obiekty złożone wynika z założeń przyjętych w projekcie. Dzięki temu uproszczeniu wyeliminowane zostały wszelkie zależności między obiektami co w znaczącym stopniu zawęża przestrzeń rozważań.
+
+Obiekty atomowe świata pogrupowane zostały w klasy N\textsubscript{i(i=1,2,...,Q)}. Pełnić będą rolę tzw. nośników systemów relacyjnych oraz są predefiniowane w systemie projektowanego agenta. Relacje definiują atomowe cechy, którymi charakteryzują się obiekty danej klasy N\textsubscript{i}. Właśnie z takich nośników zbudowane będą potencjalne stany rzeczywistego świata zewnętrznego. Klasa definiuje zatem wszystkie możliwe zbiory relacyjne, którymi można opisać obiekt należący do tejże klasy.
+
+W przyjętym modelu każdy z zaobserwowanych przez agenta stanów świata rzeczywistego S ma przypisany odpowiadający mu moment czasie 
+\textit{t\textsuperscript{S} ∈ T\textsuperscript{S}}. 
+W każdym punkcie 
+\textit{t\textsuperscript{S} ∈ T\textsuperscript{S}} 
+stan świata składa się z atomowych obiektów doświadczonych przez agenta w danym 
+\textit{t\textsuperscript{S}}. 
+Obiekty reprezentowane są przez listy cech (zgodnych z ich przynależnością do klas N\textsubscript{i}), które z punktu widzenia agenta obiekt posiadał w punkcie 
+\textit{t\textsuperscript{S} ∈ T\textsuperscript{S}}.
+Ważnym założeniem przyjętym przy realizacji projektu jest to, że ogląd świata wykonany przez agenta może być różny od stanu faktycznego.
+
+\section{Model epizodycznej bazy wiedzy}
+
+\section{Model semantycznej bazy wiedzy}
 
 
-\section{Przegląd istniejących rozwiązań}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<tekst>
+%pozostają w ścisłej relacji z oryginalnymi teoriami modalnego języka komunikacji, opisującymi zasady poprawnej i zdroworozsądkowo akceptowanej implementacji w interaktywnych systemach komputerowych tzw. kognitywnych semantyk modalnych zdań autoepistemicznych. Teorie te przynależą do obszaru (stosowanej) lingwistyki kognitywnej [Lak87] [Tal00] i jako przypadek szczególny obejmują modalne rozszerzenia zdań prostych stwierdzających wystąpienie albo brak wystąpienia cechy w konkretnym obiekcie, jak też dwuczłonowych koniunkcji, dwuczłonowych alternatyw włączających i dwuczłonowych alternatyw wykluczających złożonych ze zdań prostych [Kat07]. Sygnalizowane teorie semantyk kognitywnych formułują m.in. szczegółowe dezyderaty co do adekwatnej organizacji i treści baz wiedzy obligatoryjnie uczestniczących w realizacji procesów generowania wymienionej klasy zdań (traktowanych jako odpowiedzi na zapytania). Założenia strukturalne i funkcjonalne formułowane w teoriach semantyki kognitywnej odzwierciedlone zostały w architekturze, projekcie i implementacji agenta powstającego w ramach niniejszego projektu.
 
+%Proponowana implementacja pozostaje w ścisłej relacji z akceptowanym powszechnie przepływowym (ang. pipeline) modelem generowania zdań języka naturalnego [Wan16] [Wal02] [Ram16] [Mel06] wnosząc jednocześnie elementy oryginalne specyficzne dla formalnej teorii kognitywnej prezentowanej m.in. w [Kat07].
 
-\section{Teoretyczne podstawy zagadnienia}
-
-<tekst>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

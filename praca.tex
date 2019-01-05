@@ -47,6 +47,8 @@ fontsize=\small,
 
 %END_FOLD
 
+\DeclareUnicodeCharacter{2208}{$\mathrm{\in}$}
+
 % Dane o pracy
 \author{Mateusz Gawłowski}
 \title{Projekt i implementacja modułu ekstrakcji podsumowań danych w systemie autonomicznym}
@@ -72,7 +74,8 @@ fontsize=\small,
 % --- Strona ze streszczeniem i abstraktem ------------------------------------------------------------------
 \chapter*{Streszczenie} % po polsku
 % Wprowadzenie
-<streszczenie>
+
+<tekst>
 
 
 % Kilka sztuczek, żeby:
@@ -84,7 +87,8 @@ fontsize=\small,
 \renewcommand{\clearpage}{}
 \chapter*{Abstract} % ...i to samo po angielsku
 
-<ang. streszczenie>
+<tekst>
+
 
 \endgroup
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
@@ -109,6 +113,7 @@ fontsize=\small,
 
 % W pracy pojawią się tylko prace naprawdę cytowane.
 % \nocite{*}
+
 
 \bibliography{literatura}
 \bibliographystyle{dyplom}
