@@ -1,10 +1,11 @@
+
 \chapter{Podstawy teoretyczne w zakresie tematyki pracy}
 
-Tematyka pracy dotyczy dziedziny, która w literaturze określana jest terminem obliczeń kognitywnych (ang. \textit{cognitive computing}). Obejmuje ona inteligentne modele i metody obliczeniowe, które wyznaczają kierunek dalszego rozwoju systemów tzw. inteligencji wbudowanej oraz środowisk inteligentnych \cite{hur15}.
+Tematyka pracy dotyczy dziedziny, która w literaturze określana jest terminem obliczeń kognitywnych (ang. \textit{cognitive computing}). Obejmuje ona inteligentne modele i metody obliczeniowe, które wyznaczają kierunek dalszego rozwoju systemów tak zwanych inteligencji wbudowanej oraz środowisk inteligentnych \cite{hur15}.
 
-Podstawą wspomnianej dziedziny jest upodabnianie funkcjonowania oprogramowania lub sprzętu do działania ludzkiego mózgu. Współczesne rozwiązania (takie jak  Watson \cite{kel13}) korzystają z wielu zaawansowanych narzędzi do analizy i przetwarzania danych --- m. in. uczenie maszynowe, przetwarzanie języka naturalnego. Symulują w ten sposób działanie mózgu w oparciu o duże zbiory danych, by w przyszłości podejmować nawet istotne decyzje medyczne \cite{woo15}. Takie podejście ignoruje jednak poznawczą naturę działania mózgu, skupiając się przede wszystkim na satysfakcjonujących rezultatach, a nie próbach wiernego oddaniu sposobu w jaki funkcjonuje mózg, procesów myślowych i poznawczych.
+Podstawą wspomnianej dziedziny jest upodabnianie funkcjonowania oprogramowania lub sprzętu do działania ludzkiego mózgu. Współczesne rozwiązania (takie jak  Watson \cite{kel13}) korzystają z wielu zaawansowanych narzędzi do analizy i przetwarzania danych --- między innymi uczenie maszynowe, przetwarzanie języka naturalnego. Symulują w ten sposób działanie mózgu w oparciu o duże zbiory danych, by w przyszłości podejmować nawet istotne decyzje medyczne \cite{woo15}. Takie podejście ignoruje jednak poznawczą naturę działania mózgu, skupiając się przede wszystkim na satysfakcjonujących rezultatach, a nie próbach wiernego oddaniu sposobu w jaki funkcjonuje mózg, procesów myślowych i poznawczych.
 
-W odróżnieniu od wspomnianego podejścia rozwiązania zastosowane w aplikacji należą do obszaru określanego jako lingwistyka kognitywna. Tym samym pozostają w większym stopniu związane z pojęciem kognitywistyki samym w sobie. Jest to interdyscyplinarna dziedzina nauki z pogranicza m. in. filozofii, psychologii, sztucznej inteligencji i lingwistyki (określana także jako nauki kognitywne, poznawcze). Dotyczy ona obserwacji i analizy działania zmysłów, mózgu i umysłu oraz ich modelowania \cite{tha17}.
+W odróżnieniu od wspomnianego podejścia rozwiązania zastosowane w aplikacji należą do obszaru określanego jako lingwistyka kognitywna. Tym samym pozostają w większym stopniu związane z pojęciem kognitywistyki samym w sobie. Jest to interdyscyplinarna dziedzina nauki z pogranicza między innymi filozofii, psychologii, sztucznej inteligencji i lingwistyki (określana także jako nauki kognitywne, poznawcze). Dotyczy ona obserwacji i analizy działania zmysłów, mózgu i umysłu oraz ich modelowania \cite{tha17}.
 
 W pracy, a także w całej aplikacji zaproponowana została oryginalna semantyka kognitywna. Pozostaje ona w zgodzie z ogólnie przyjętymi teoriami modalnego języka komunikacji \cite{tal00}, będących częścią lingwistyki kognitywnej. Zaproponowana implementacja systemu kognitywnego agenta jest w ścisłej relacji z formalną teorią kognitywną zaprezentowaną w \cite{kat07}. Zauważa się jednak brak publikacji bezpośrednio powiązanych z realizowanym systemem agentowym.
 
@@ -12,23 +13,80 @@ W dalszej części tego rozdziału zawarto podstawowe wprowadzenie teoretyczne p
 
 Szczegółowy opis wszystkich zagadnień i poszczególnych składowych opracowanego modelu można znaleźć w raporcie dotyczącym wspomnianej aplikacji \cite{raport}.
 
-\section{Model świata}   % zewnętrznego świata rzeczywistego
 
-Zewnętrznym światem rzeczywistym S projektowanego agenta jest dla niego otoczenie, w którym został umieszczony, i który objęty jest przez niego aktywnością obserwacyjną. Przedmiotem obserwacji są obiekty umieszczone w świecie S.
+\section{Model świata rzeczywistego}
 
-Świat zbudowany jest z atomowych obiektów --- są to proste obiekty, dla których możliwe jest zdefiniowanie zbioru cech jakimi się charakteryzują. Ograniczenie modelu wyłącznie do obiektów atomowych, w przeciwieństwie do świata, który naprawdę składa się z krotek obiektów atomowych, które reprezentują obiekty złożone wynika z założeń przyjętych w projekcie. Dzięki temu uproszczeniu wyeliminowane zostały wszelkie zależności między obiektami co w znaczącym stopniu zawęża przestrzeń rozważań.
+Zewnętrznym światem rzeczywistym \textit{S} projektowanego agenta jest dla niego otoczenie, w którym został umieszczony, i który objęty jest przez niego aktywnością obserwacyjną. Głównym elementem świata oraz przedmiotem obserwacji są obiekty umieszczone w świecie \textit{S}. Dalej omówione zostały poszczególne elementy modelu.
 
-Obiekty atomowe świata pogrupowane zostały w klasy N\textsubscript{i(i=1,2,...,Q)}. Pełnić będą rolę tzw. nośników systemów relacyjnych oraz są predefiniowane w systemie projektowanego agenta. Relacje definiują atomowe cechy, którymi charakteryzują się obiekty danej klasy N\textsubscript{i}. Właśnie z takich nośników zbudowane będą potencjalne stany rzeczywistego świata zewnętrznego. Klasa definiuje zatem wszystkie możliwe zbiory relacyjne, którymi można opisać obiekt należący do tejże klasy.
 
-W przyjętym modelu każdy z zaobserwowanych przez agenta stanów świata rzeczywistego S ma przypisany odpowiadający mu moment czasie 
-\textit{t\textsuperscript{S} ∈ T\textsuperscript{S}}. 
-W każdym punkcie 
-\textit{t\textsuperscript{S} ∈ T\textsuperscript{S}} 
-stan świata składa się z atomowych obiektów doświadczonych przez agenta w danym 
-\textit{t\textsuperscript{S}}. 
-Obiekty reprezentowane są przez listy cech (zgodnych z ich przynależnością do klas N\textsubscript{i}), które z punktu widzenia agenta obiekt posiadał w punkcie 
-\textit{t\textsuperscript{S} ∈ T\textsuperscript{S}}.
-Ważnym założeniem przyjętym przy realizacji projektu jest to, że ogląd świata wykonany przez agenta może być różny od stanu faktycznego.
+	\subsection{Obiekty}
+	
+	Świat \textit{S} zbudowany jest z atomowych obiektów, --- są to proste obiekty, dla których możliwe jest zdefiniowanie zbioru cech jakimi się charakteryzują. Ograniczenie modelu wyłącznie do obiektów atomowych, w przeciwieństwie do świata, który naprawdę składa się z krotek obiektów atomowych, które reprezentują obiekty złożone wynika z założeń przyjętych w projekcie. Dzięki temu uproszczeniu wyeliminowane zostały wszelkie zależności między obiektami co w znaczącym stopniu zawęża przestrzeń rozważań.
+	
+	
+	\subsection{Klasy obiektów}
+	
+	Obiekty atomowe świata pogrupowane zostały w klasy 
+	\textit{N\textsubscript{i(i=1,2,...,Q)}}. 
+	Każdy potencjalny --- obserwowalny przez agenta --- obiekt umieszczony w świecie \textit{S} przynależy do jednej z klas
+	\textit{N\textsubscript{i}}. 
+	Pełnić będą one rolę tak zwanych nośników systemów relacyjnych oraz są predefiniowane w systemie projektowanego agenta. Relacje definiują atomowe cechy, którymi charakteryzują się obiekty danej klasy 
+	\textit{N\textsubscript{i}}. 
+	Właśnie z takich nośników zbudowane będą potencjalne stany rzeczywistego świata zewnętrznego. Klasa definiuje zatem wszystkie możliwe zbiory relacyjne, którymi można opisać obiekt należący do tejże klasy.
+	
+	
+	\subsection{Stan świata}
+	
+	W przyjętym modelu każdy z zaobserwowanych przez agenta stanów świata rzeczywistego \textit{S} ma przypisany odpowiadający mu moment w czasie 
+	\textit{t\textsuperscript{ S} ∈ T\textsuperscript{ S}}. 
+	We wszystkich punktach 
+	\textit{t\textsuperscript{ S} ∈ T\textsuperscript{ S}} 
+	stan świata składa się z atomowych obiektów doświadczonych przez agenta w danym czasie 
+	\textit{t\textsuperscript{ S}}.
+	Obiekty reprezentowane są przez listy cech (zgodnych z ich przynależnością do klas 
+	\textit{N\textsubscript{i}}), 
+	które z punktu widzenia agenta obiekt posiadał w punkcie 
+	\textit{t\textsuperscript{ S} ∈ T\textsuperscript{ S}}.
+	Ważnym założeniem przyjętym przy realizacji projektu jest to, że ogląd świata wykonany przez agenta może być różny od stanu faktycznego, w jakim ten świat się znajdował.
+	
+	% chronologia
+	
+	Punkty zbioru 
+	\textit{T\textsuperscript{ S}} 
+	określają porządek chronologiczny wśród zaobserwowanych stanów świata rzeczywistego. Wyznaczane są one arbitralnie przez agenta w oparciu o zegar globalny. Agent sam podejmuje decyzje kiedy kończy ogląd świata w danym 
+	\textit{t\textsuperscript{ S}\textsubscript{i}}, 
+	a kolejnemu przypisany zostanie punkt (moment)
+	\textit{t\textsuperscript{ S}\textsubscript{i+1}}.
+	Wykorzystany czas globalny jest więc jedynie pozorną miarą, która nie ma związku z rzeczywistym upływem czasu, a służy jedynie zachowaniu liniowego porządku chronologicznego.
+	
+	
+	\subsection{Cechy i opis świata}
+	
+	Opis stanu świata zbudowany jest z obiektów, opisanych za pomocą zestawów predefiniowanych cech 
+	\textit{P\textsubscript{i(i=1,2,...,K)}}, 
+	pochodzących z klas 
+	\textit{N\textsubscript{i}} 
+	do których należą poszczególne obiekty. Cechy są atomowe --- zauważyć można jedynie obecność lub brak danej cechy w danym obiekcie. Posiadanie lub nie posiadanie konkretnej cechy
+	\textit{P\textsubscript{i}}
+	przez rzeczywisty obiekt atomowy w punkcie (momencie) czasu
+	\textit{t\textsuperscript{ S} ∈ T\textsuperscript{ S}} 
+	reprezentowane jest przez obecność tego obiektu w odpowiednich relacjach przedstawiających rozkłady cech w obiektach. Przyjęte zostało założenie, że lista cech przypisywanych obiektom nie zmienia się --- jest stała. 
+
+	Założono, że narzędzia percepcyjne docelowego agenta umożliwiać będą zidentyfikowanie przynależność obiektu do danej klasy oraz bezpośrednią obserwację stanów tych cech w obiektach rzeczywistych. Zgodnie 
+	z 
+	wcześniejszym założeniem o możliwych różnicach między stanem świata postrzeganym przez agenta, a stanem faktycznym, zakłada się również, że w pewnych warunkach niezależących od agenta (np. niedostatecznego oświetlenia) stan cechy nie tylko może zostać błędnie ustalony, ale też stwierdzenie stanu tej cechy jest niemożliwe. Biorąc powyższe założenia pod uwagę pojedyncza cecha danego obiektu może mieć trzy stany: 
+	
+		\begin{itemize}
+		 	\setlength{\itemindent}{.5in}
+			\item stwierdzono występowanie cechy \textit{P\textsubscript{i}},
+			\item stwierdzono brak cechy \textit{P\textsubscript{i}},
+			\item niemożliwe jest stwierdzenie stanu cechy \textit{P\textsubscript{i}}.
+		\end{itemize}
+	
+	Uporządkowane liniowo obserwacje stanu świata stanowią jedyne źródło subiektywnej wiedzy empirycznej (wiedzy opartej na doświadczeniu) agenta na temat świata. Wszelki brak wiedzy na temat cech obiektów w najnowszym (bieżącym) zaobserwowanym stanie świata, zostanie uzupełniony przez wbudowane procesy kognitywne. Tym samym wiedza agenta o stanie świata nie jest tożsama z jego wiedzą o bieżącym stanie świata.
+	
+	Kluczowym zadaniem realizowanego agenta jest wyrażenie treści subiektywnych przekonań na temat świata w sytuacji, gdy przeprowadzenie kompletnego oglądu, z różnych powodów, nie będzie możliwe.
+	
 
 \section{Model epizodycznej bazy wiedzy}
 
