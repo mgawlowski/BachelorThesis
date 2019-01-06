@@ -78,9 +78,9 @@ Zewnętrznym światem rzeczywistym \textit{S} projektowanego agenta jest dla nie
 	
 		\begin{itemize}
 		 	\setlength{\itemindent}{.5in}
-			\item stwierdzono występowanie cechy \textit{P\textsubscript{i}},
-			\item stwierdzono brak cechy \textit{P\textsubscript{i}},
-			\item niemożliwe jest stwierdzenie stanu cechy \textit{P\textsubscript{i}}.
+			\item zaobserwowano występowanie cechy \textit{P\textsubscript{i}},
+			\item zaobserwowano brak cechy \textit{P\textsubscript{i}},
+			\item niemożliwe jest określenie stanu cechy \textit{P\textsubscript{i}}.
 		\end{itemize}
 	
 	Uporządkowane liniowo obserwacje stanu świata stanowią jedyne źródło subiektywnej wiedzy empirycznej (wiedzy opartej na doświadczeniu) agenta na temat świata. Wszelki brak wiedzy na temat cech obiektów w najnowszym (bieżącym) zaobserwowanym stanie świata, zostanie uzupełniony przez wbudowane procesy kognitywne. Tym samym wiedza agenta o stanie świata nie jest tożsama z jego wiedzą o bieżącym stanie świata.
@@ -89,6 +89,16 @@ Zewnętrznym światem rzeczywistym \textit{S} projektowanego agenta jest dla nie
 	
 
 \section{Model epizodycznej bazy wiedzy}
+
+Epizodyczna baza wiedzy jest enkapsulowaną w agencie prywatną bazą, stanowiącą podstawowy reprezentację wiedzy przechowywanej przez agenta na temat stanu zewnętrznego świata rzeczywistego. W dowolnym globalnym punkcie 
+\textit{t\textsuperscript{ S}} 
+zawiera tylko te obiekty, o których istnieniu agent jest przekonany w punkcie 
+\textit{t\textsuperscript{ S}}.
+
+Baza zbudowana jest z uporządkowanych liniowo w czasie epizodów. Wiedza agenta w punkcie \textit{t}, składa się ze zbioru wszystkich epizodów e, dla których spełniona jest zależność \textit{t\textsubscript{e} ≤ t}.
+
+Epizod dotyczący punktu w czasie \textit{t} składa się z zestawów cech \textit{P\textsuperscript{ +}}
+
 
 \section{Model semantycznej bazy wiedzy}
 
