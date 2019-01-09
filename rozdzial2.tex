@@ -1,16 +1,120 @@
 \chapter{Założenia projektowe}
 
-<tekst>
+Ten rozdział posłuży przybliżeniu działania zrealizowanej aplikacji agenta od strony praktycznej oraz przedstawienie założeń przyjętych dla opracowanego rozszerzenia. 
+
+Opisane zostaną najważniejsze, zaimplementowane w systemie funkcjonalności. Opis ten będzie kluczowy w zrozumieniu założeń projektowych rozszerzenia oraz ich wagę dla usprawnienia działania agenta. Oprócz tego przedstawiony zostanie prosty przykład pracy agenta, co zilustruje poszczególne etapy jego pracy. Dalej wskazano problem z jakim zmierzono się w tej pracy, poprzez ukazanie elementów, które na tle całej aplikacji wymagają usprawnienia. Na końcu sformułowano wymagania funkcjonalne i niefunkcjonalne dla nowego modułu ekstrakcji podsumowań danych.
 
 
 \section{Opis aplikacji bazowej}
 
-<tekst>
+Poniżej przybliżona została architektura i funkcjonalności aplikacji nazwanej \textit{ModalCommLangGrounding}, która  w ramach tej pracy jest rozszerzana. Poszczególne elementy tego systemu widoczne są na rysunku \ref{rys:schemat}. Aplikacja została ona opracowana w modelu obiektowym i realizuje, w warstwie oprogramowania, system wbudowanego agenta. Do implementacji wykorzystano język programowania \textit{Java} w wersji 1.8.
+
+Aplikacja realizuje przetwarzanie obserwacji, zawierających informacje o fizycznych stanach cech obiektu. Umożliwia to generowanie na ich podstawie podsumowań lingwistycznych w języku naturalnym na temat aktualnego stanu obiektów. Obserwacje przechowywane są w odpowiednio przygotowanej bazie danych, która w obrębie działającego agenta jest wypełniana poprzez zewnętrzne mechanizmy. Do realizacji bazy danych wykorzystano bibliotekę \textit{SQLite} implementującą prosty silnik SQL. Technologia \textit{SQLite} nie wymaga do działania osobnego procesu zarządzania relacyjną bazą danych, dlatego jest optymalnym rozwiązaniem dla realizowanego agenta i innych systemów wbudowanych.
+
+\begin{figure}  
+	\centering\includegraphics[width=.9\textwidth]{img/agent-schemat}
+	\caption{Koncepcyjny schemat aplikacji agenta \cite{raport}}
+	\label{rys:schemat}
+\end{figure}
+
+Model świata (otoczenie) w którym umieszczony został potencjalny agent jest w pełni deterministyczny. Wszystkie możliwe do zaobserwowania typy obiektów, jak również ich zestawy cech są predefiniowane przez użytkownika w pliku konfiguracyjnym w formacie XML. Te informacje są podstawowym elementem wiedzy semantycznej agenta oraz stanowi źródło struktury danych w bazie, do której dodawane są obserwacje. Zdolność do zaobserwowania cech obiektu jest w pełni uzależniona od definicji jego typu (klasy). Oprócz tego częścią wiedzy semantycznej jest również zbiór rozpoznanych obiektów. Do parsowania plików XML wykorzystano bibliotekę \textit{XStream}.
+
+Każdy obiekt umieszczony w świecie agenta musi zawierać identyfikator, aby mógł zostać rozpoznany, np.\ kod kreskowy (przygotowano mechanizm pozwalający na używanie wielu rodzajów identyfikatorów jednocześnie). Użycie identyfikatorów umożliwia agentowi rozróżnianie poszczególnych obiektów. Dodatkowo część identyfikatora określa jego przynależność do danego typu obiektów. Pozwala to na poznanie zestawu potencjalnych cech, których występowanie w tym obiekcie powinno zostać przez agenta rozpoznane. 
+
+Obserwacja w tak skonstruowanym modelu reprezentowana jest jako pojedyncze doświadczenie stanu obiektu. Stan jako doświadczenie epizodyczne jest zestawem zaobserwowanych cech. Pojedyncza cecha jest atomowa, a jej wartość informuje o tym czy w danym obiekcie stwierdzono obecność, brak lub niemożność określenia występowania tej cechy. Przykładem takiej cechy jest \textit{zielony kolor}. Wartość tej cechy w danej obserwacji interpretowana jest w taki sposób, że  obiekt o identyfikatorze $ id $ w momencie $ t $ jest koloru zielonego, nie jest koloru zielonego lub nie stwierdzono czy jest koloru zielonego.
+
+Tak zdefiniowana obserwacja wraz z identyfikatorem konkretnego obiektu oraz znacznikiem czasu przechowywane są w fizycznej bazie SQL agenta, która stanowi jedyne źródło wiedzy empirycznej agenta. Zakłada się, że agent wyposażony jest w odpowiednie narzędzia percepcyjne, którymi dokonuje oglądu obiektów umieszczonych w jego zewnętrznym świecie rzeczywistym. Realizowana aplikacja korzysta już z wypełnionej (oraz reaguje na nowe obserwacje) bazy danych i nie zawiera mechanizmów percepcyjnych.
+
+Za pomocą obserwacji pobranych z bazy, pogrupowanych według znacznika czasu, tworzone są tak zwane epizody. Dany epizod dotyczy konkretnego punktu w czasie i zawiera zbiory obiektów, dla których zaobserwowano że występuje, nie występuje lub nie stwierdzono czy występuje każda z cech. Kolekcja epizodów stanowi podstawowe źródło wiedzy empirycznej agenta i jest częścią jego pamięci (rys. \ref{rys:schemat}). Za bieżący stan świata uznawany jest epizod o najwyższym znaczniku czasu.
+
+Na podstawie zebranej wiedzy agentowi może zostać zadane przez użytkownika pytanie na temat aktualnego stanu konkretnego obiektu. Może ono dotyczyć występowania albo braku występowania pojedynczej cechy lub kilku cech w formie dwuczłonowej koniunkcji. Odpowiedzią agenta jest modalne zdanie języka naturalnego zawierające subiektywne przekonanie na temat bieżącego stanu podanych cech. Agent po otrzymaniu zapytania upewnia się, czy stan jego wiedzy epizodycznej jest aktualny, tzn. czy w bazie danych nie ma obserwacji, które najpierw powinny zostać wczytane do jego pamięci epizodycznej.
+
+W przypadku, gdy wiedza o aktualnym stanie świata jest niewystarczająco kompletna, to znaczy gdy występowanie cechy zawartej w pytaniu nie zostało z różnych powodów określone (np.\ niedostateczne oświetlenie), agent w oparciu o wiedzę dotyczącą wcześniejszych stanów obiektu dokonuje gruntowania wiedzy. Dotyczy to zarówno pytania o jedną cechę, jak i o dwie cechy w przypadku gdy przynajmniej jedna z nich jest nieokreślona. Efektem końcowym jest odpowiedź o odpowiednim stopniu modalności z użyciem operatorów: 
+
+\begin{itemize}
+	\setlength{\itemindent}{.5in}
+	\item "Możliwe, że (...)" -- operator \textit{POS},
+	\item "Sądzę, że (...)" -- operator \textit{BEL},
+	\item "Wiem, że (...)" -- operator \textit{KNOW}.
+\end{itemize}  
+
+Przy czym to, który z nich zostanie użyty zależy od stopnia przekonania agenta oraz zdefiniowanych przez użytkownika progów modalności. Innymi słowy są to granice, które wyznaczają moment w którym agent interpretuje swoją wiedzę z mniejszym lub większym przekonaniem co do zgodności z rzeczywistością. Wpływ na to ma względna liczność poszczególnych zbiorów epizodów, reprezentujących relewantne doświadczenia z przeszłości (odnoszące się do danego obiektu i cech). Częstsze występowanie danej predykacji skutkuje silniejszymi przekonaniami agenta o możliwości jej wystąpienia w rzeczywistości.
+
+Strukturą wiedzy łączącą powiązane ze sobą i logicznie dopełniające się zbiory gruntujące jest holon. Zbiór holonów przynależy do wiedzy semantycznej agenta. Stworzone podczas gruntowania wiedzy holony przechowywane są w odpowiedniej kolekcji. Holon, jeśli jest aktualny, może zostać ponownie wykorzystany do bezpośredniego utworzenia zdania modalnego na temat obiektu oraz cech, których dotyczy. W przypadku, gdy nie jest aktualny, to w pierwotnej wersji aplikacji holon ten budowany jest od nowa.
+
+Aplikację agenta uruchomić można w trybie programowym. Przygotowany został do tego mechanizm przeprowadzania symulacji z użyciem plików w formacie CSV. Pozwala to na sprawne wczytanie do wiedzy agenta informacji o obiektach oraz obserwacji. Dodatkowo używając tego samego pliku po każdej wczytanej obserwacji mogą zostać sformułowane zapytania do agenta dotyczące stanu wiedzy po danej obserwacji. Pozwala to na prześledzenie zmian w przekonaniach agenta pod wpływem kolejnych obserwacji obiektów. Dodatkowo możliwe jest też ręczne wprowadzanie nowych obserwacji do bazy danych (pozwalają na to narzędzia niektórych środowisk programistycznych) oraz zadawanie pytań poprzez linię komend w trakcie działania agenta. 
+
+Jednakże docelowym trybem pracy agenta jest praca w czasie rzeczywistym oparta na wielowątkowości. Cykl życia agenta (widoczny na rysunku \ref{rys:schemat}) pozwala mu na samodzielne aktualizowanie stanu jego wiedzy oraz komunikację głosową z użytkownikiem końcowym (głównie człowiekiem). Wątek aktualizacji uruchamiany jest tylko w sytuacji bezczynności --- braku aktywnej komunikacji. Do rozpoznawania mowy wykorzystano odrębny, zewnętrzny moduł, który zaimplementowany został w języku C\# z wykorzystaniem platformy \textit{Microsoft.Speech} oraz pliku gramatyki w formacie XML, który zawiera predefiniowane nazwy cech oraz obiektów, co umożliwia rozpoznanie poszczególnych wyrazów. Agent nasłuchuje zdań, które mogą zostać przetworzone i na ich podstawie generowane są podsumowania lingwistyczne. Przyjęte zdania tworzą tak zwaną kolejkę FIFO (First In, First Out), gdzie rozpatrywane są w kolejności z jaką się pojawiły. Wygenerowane podsumowanie przesyłane jest z powrotem do modułu komunikacji, który syntezuje głosową odpowiedź i wypowiada ją do użytkownika.
 
 
 \section{Przykład pracy agenta}
 
-<tekst>
+Poniżej przedstawiono przykładowy scenariusz pracy agenta. Został on odpowiednio uproszczony, tak aby przedstawić przede wszystkim kolejne etapy pracy agenta oraz podkreślić zmienność jego przekonań o stanie świata rzeczywistego (obiektów w nim umieszczonych). Przykład opracowano na podstawie \cite{kat17}, gdzie również zaprezentowane zostały scenariusze ekstrakcji podsumowań lingwistycznych.
+
+Założono, że w otoczeniu agenta są tylko dwa obiekty o identyfikatorach 1101 i 1102. Są one tego samego typu, co jest dedukowane na podstawie dwóch pierwszych cyfr identyfikatora. W języku naturalnym będą nazywane odpowiednio \textit{Foobar} i \textit{Foobaz}. Obiekty typu 11 (reprezentującym np.\ piłki) charakteryzują się dwiema cechami --- mogą być okrągłe i/lub kolorowe. Każda cecha może mieć trzy stany, które oznaczone są w następujący sposób:
+
+\begin{enumerate}
+	\setlength{\itemindent}{.5in}
+	\item \hspace{.05in} "$+$" - cecha występuje w obiekcie,
+	\item \hspace{.05in} "$-$" - brak cechy w obiekcie,
+	\item \hspace{.05in} "$?$" $\space$ - nie udało się określić stanu cechy.
+\end{enumerate}  
+
+Agent w momencie uruchomienia ma pustą pamięć, jednakże w źródłowej bazie danych mogą być już obecne obserwacje. Cykl życie agenta wykonuje okresowo dwie czynności: sprawdza czy w bazie nie ma nowych obserwacji, z których powinny zostać zbudowane epizody oraz czy w kolejce pytań jest zdanie, które oczekuje na przetworzenie. W tym przykładzie baza danych, w momencie uruchomienia, ma już przeprowadzonych sześć obserwacji, które przedstawiono w tabeli \ref{tab:obserwacje1}. Agent buduje z nich odpowiednie epizody, które ładuje do pamięci epizodycznej.
+
+\begin{table}[H]
+	\caption{Obserwacje obecne w bazie danych przed uruchomieniem agenta}
+	\label{tab:obserwacje1}
+	\centering
+	\begin{tabular}{|l|l|c|c|} \hline
+		\textbf{Czas} & \textbf{Identyfikator} & \textbf{Okrągły} & \textbf{Kolorowy} \\ \hline
+		1  &  1101  &  $ + $  &  $ + $  \\ \hline
+		1  &  1102  &  $ + $  &  $ - $  \\ \hline
+		2  &  1101  &  $ + $  &  $ - $  \\ \hline
+		2  &  1102  &  $ + $  &  $ - $  \\ \hline
+		3  &  1101  &  $ + $  &  $ ? $  \\ \hline
+		3  &  1102  &  $ + $  &  $ + $  \\ \hline
+	\end{tabular}
+\end{table}
+
+Podstawowa wiedza agenta zbudowana jest z epizodów, wykorzystywane są one do gruntowania przekonań agenta. Pojedynczy epizod przechowuje następujące informacje: znacznik czasu oraz zbiory cech występujących, niewystępujących oraz nieokreślonych (wraz z listami obiektów). Zgodnie z tą strukturą trzeci epizod ma następującą postać:
+
+\begin{itemize}
+	\setlength{\itemindent}{.5in}
+	\item znacznik czasu $ = $ 3,
+	\item cechy występujące $ = $ \{ \{Okrągły, \{1101, 1102\}\}, \{Kolorowy, \{1102\}\} \},
+	\item cechy niewystępujące $ = $ \{ \},
+	\item cechy nieokreślone $ = $ \{ \{Kolorowy, \{1101\}\} \}.
+\end{itemize}  
+
+Użytkownik zadaje następujące pytanie agentowi: "Czy Foobar jest okrągły?". Pierwszą czynnością wykonywaną przez agenta jest zawsze sprawdzenie czy stan jego wiedzy jest aktualny. Innymi słowy czy w bazie danych są obserwacje, które nie zostały jeszcze wprowadzone do pamięci. Jeśli tak, agent najpierw przeprowadza aktualizację. W kolejnym kroku przeszukiwana jest wiedza agenta o bieżącym (najnowszym) stanie świata. W tym przypadku pozwala ona otrzymać bezpośrednią odpowiedź na zadane pytanie -- trzeci epizod (przedstawiony wcześniej) zawiera informacje o tym, że w obiekcie 1101 (nazwanym Foobar) występuje cecha "okrągły". Dzięki temu agent może od razu udzielić odpowiedź: "Wiem, że Foobar jest okrągły".
+
+Zanim użytkownik zada kolejne pytania, agent dwukrotnie dokonuje oglądu otoczenia. Nowe obserwacje (przedstawione w tabeli \ref{tab:obserwacje2}) wczytywane są do pamięci agenta. 
+
+\begin{table}[H]
+	\caption{Nowe obserwacje w bazie danych}
+	\label{tab:obserwacje2}
+	\centering
+	\begin{tabular}{|l|l|c|c|} \hline
+		\textbf{Czas} & \textbf{Identyfikator} & \textbf{Okrągły} & \textbf{Kolorowy} \\ \hline
+		4  &  1101  &  $ - $  &  $ - $  \\ \hline
+		4  &  1102  &  $ + $  &  $ - $  \\ \hline
+		5  &  1102  &  $ - $  &  $ ? $  \\ \hline
+	\end{tabular}
+\end{table}
+
+Użytkownik powtarza pytanie zadane wcześniej, które brzmiało: "Czy Foobar jest okrągły?". Tym razem sytuacja jest inna -- agent nie posiada żadnej wiedzy na temat bieżącego stanu tego obiektu. Tym samym agent zmuszony jest uzupełnić swoje przekonania procesem gruntowania wiedzy. Przetwarzanie rozpoczyna się od pobrania z kolekcji epizodów informacji odnoszących się do danego obiektu i cechy. W tym przypadku jest to Foobar (1101) i cecha "okrągły". Wynikiem procesu gruntowania będzie holon prosty, w którym zapisane zostaną następujące liczbowe wartości podsumowań:
+
+\begin{itemize}
+	\setlength{\itemindent}{.5in}
+	\item okrągły $ = \dfrac{3}{4} = 0,75 $,
+	\vspace{0.1in}
+	\item nieokrągły $ = \dfrac{1}{4} = 0,25 $,
+\end{itemize}  
+
+Otrzymane wartości odpowiadają kolejno operatorom modalnym \textit{BEL} i \textit{POS}. Zgodnie z nimi wyrażona przez agenta odpowiedź będzie brzmiała następująco: "Wierzę, że Foobar jest okrągły, ale możliwe, że nie jest okrągły".
+
+% foobaz - koniunkcja
 
 
 \section{Przedstawienie problemu}

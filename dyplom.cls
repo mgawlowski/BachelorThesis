@@ -695,7 +695,7 @@ Kierunek studiów: \@kierunek
 \vspace{0.1cm plus .2fill}
 \begin{flushright}
 \small
-słowa kluczowe:\\[0.8ex]
+słowa kluczowe:\\[1.5ex]
 \begin{minipage}{7cm}
 \StrLen{\@slowakluczowe}[\kluczowedlugosc]
 \ifthenelse{\kluczowedlugosc > \dlugoscmaxc}{
@@ -708,7 +708,7 @@ słowa kluczowe:\\[0.8ex]
 \end{flushright}
 \vspace{0.07cm plus 0.2fill}
 		\begin{flushleft}
-			\small krótkie streszczenie:\\[.8ex]
+			\small krótkie streszczenie:\\[1ex]
 			\StrLen{\@krotkiestreszczenie}[\streszczeniedlugosc]
 			\ifthenelse{\streszczeniedlugosc > \dlugoscmaxb}{
 				\parbox{\textwidth}{
@@ -731,7 +731,7 @@ słowa kluczowe:\\[0.8ex]
 \vspace{\fill}
 \begin{flushleft}
 \begin{minipage}[b][0.33\textheight]{\textwidth}
-\begin{tabular}{|P{2.35cm}|P{6cm}|C{1.15cm}|C{1.9cm}|}
+\begin{tabular}{|P{1.98cm}|P{6.74cm}|C{0.83cm}|C{1.8cm}|}
 \hline
 \multirow{2}{2.35cm}[.1em]{\scriptsize Opiekun pracy dyplomowej} 
 &  
@@ -753,7 +753,7 @@ słowa kluczowe:\\[0.8ex]
 }
 }
 &   
-\vspace{-6pt}\dotline[3pt]{31pt}
+\vspace{-6pt}\dotline[3pt]{23pt}
 &
 \vspace{-6pt}\dotline[3pt]{51pt}
 \\ \cline{2-4} 
@@ -783,7 +783,7 @@ słowa kluczowe:\\[0.8ex]
 }
 }
 &   
-\vspace{-6pt}\dotline[3pt]{31pt}
+\vspace{-6pt}\dotline[3pt]{23pt}
 &
 \vspace{-6pt}\dotline[3pt]{51pt}
 \\ \cline{2-4} 

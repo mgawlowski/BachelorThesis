@@ -3,7 +3,7 @@
 
 Tematyka pracy dotyczy dziedziny, która w literaturze określana jest terminem obliczeń kognitywnych (ang. \textit{cognitive computing}). Obejmuje ona inteligentne modele i metody obliczeniowe, które wyznaczają kierunek dalszego rozwoju systemów tak zwanych inteligencji wbudowanej oraz środowisk inteligentnych \cite{hur15}.
 
-Podstawą wspomnianej dziedziny jest upodabnianie funkcjonowania oprogramowania lub sprzętu do działania ludzkiego mózgu. Współczesne rozwiązania (takie jak  Watson \cite{kel13}) korzystają z wielu zaawansowanych narzędzi do analizy i przetwarzania danych --- między innymi uczenie maszynowe, przetwarzanie języka naturalnego. Symulują w ten sposób działanie mózgu w oparciu o duże zbiory danych, by w przyszłości podejmować nawet istotne decyzje medyczne \cite{woo15}. Takie podejście ignoruje jednak poznawczą naturę działania mózgu, skupiając się przede wszystkim na satysfakcjonujących rezultatach, a nie próbach wiernego oddaniu sposobu w jaki funkcjonuje mózg, procesów myślowych i poznawczych.
+Podstawą wspomnianej dziedziny jest upodabnianie funkcjonowania oprogramowania lub sprzętu do działania ludzkiego mózgu. Współczesne rozwiązania (takie jak np.\ Watson \cite{kel13}) korzystają z wielu zaawansowanych narzędzi do analizy i przetwarzania danych --- między innymi uczenie maszynowe, przetwarzanie języka naturalnego. Symulują w ten sposób działanie mózgu w oparciu o duże zbiory danych, aby w przyszłości podejmować nawet istotne decyzje medyczne \cite{woo15}. Takie podejście ignoruje jednak poznawczą naturę działania mózgu, skupiając się przede wszystkim na satysfakcjonujących rezultatach, a nie na próbach wiernego oddaniu sposobu w jaki funkcjonuje mózg, procesów myślowych i poznawczych.
 
 W odróżnieniu od wspomnianego podejścia rozwiązania zastosowane w aplikacji należą do obszaru określanego jako lingwistyka kognitywna. Tym samym pozostają w większym stopniu związane z pojęciem kognitywistyki samym w sobie. Jest to interdyscyplinarna dziedzina nauki z pogranicza między innymi filozofii, psychologii, sztucznej inteligencji i lingwistyki (określana także jako nauki kognitywne, poznawcze). Dotyczy ona obserwacji i analizy działania zmysłów, mózgu i umysłu oraz ich modelowania \cite{tha17}.
 
@@ -11,7 +11,7 @@ W pracy, a także w całej aplikacji zaproponowana została oryginalna semantyka
 
 W dalszej części tego rozdziału zawarto podstawowe wprowadzenie teoretyczne przybliżające zagadnienia i modele, na których opiera się aplikacja agenta oraz opracowany moduł zarządzania pamięcią semantyczną. Przedstawiono przede wszystkim te elementy projektowanego systemu agentowego (agenta i jego otoczenia), które są bezpośrednio powiązane z nowym modułem: model zewnętrznego względem agenta świata rzeczywistego i objętego jego działaniem obserwacyjnym, model enkapsulowanej (prywatnej) epizodycznej bazy wiedzy służącej do przechowywania pojedynczych obserwacji świata zewnętrznego oraz model semantycznej wiedzy agenta opartej na koncepcji holonów, jako oryginalne rozszerzenie reprezentujące wynik ekstrakcji podsumowań danych.
 
-Szczegółowy opis wszystkich zagadnień i poszczególnych składowych opracowanego modelu można znaleźć w raporcie dotyczącym wspomnianej aplikacji \cite{raport}. Większość założeń funkcjonalnych przyjętych w projekcie, wprowadzona została we wcześniejszych pracach na temat przetwarzania modalnych języków komunikacji --- np. \cite{kat99} \cite{kat07}.
+Szczegółowy opis wszystkich zagadnień i poszczególnych składowych opracowanego modelu można znaleźć w raporcie dotyczącym wspomnianej aplikacji \cite{raport}. Większość założeń funkcjonalnych przyjętych w projekcie, wprowadzona została we wcześniejszych pracach na temat przetwarzania modalnych języków komunikacji --- np.\ \cite{kat99} \cite{kat07}.
 
 
 \section{Model świata rzeczywistego}
@@ -42,7 +42,7 @@ Zewnętrznym światem rzeczywistym $ S $ projektowanego agenta jest dla niego ot
 	
 	Opis stanu świata zbudowany jest z obiektów, opisanych za pomocą zestawów predefiniowanych cech $ P_{i(i=1,2,...,K)} $, pochodzących z klas $ N_i $ do których należą poszczególne obiekty. Cechy są atomowe --- zauważyć można jedynie obecność lub brak danej cechy w danym obiekcie. Posiadanie lub nie posiadanie konkretnej cechy $ P_i $ przez rzeczywisty obiekt atomowy w punkcie (momencie) czasu $ t^S \in T^S $ reprezentowane jest przez obecność tego obiektu w odpowiednich relacjach przedstawiających rozkłady cech w obiektach. Przyjęte zostało założenie, że lista cech przypisywanych obiektom nie zmienia się --- jest stała. 
 
-	Założono, że narzędzia percepcyjne docelowego agenta umożliwiać będą zidentyfikowanie przynależność obiektu do danej klasy oraz bezpośrednią obserwację stanów tych cech w obiektach rzeczywistych. Zgodnie z wcześniejszym założeniem o możliwych różnicach między stanem świata postrzeganym przez agenta, a stanem faktycznym, zakłada się również, że w pewnych warunkach niezależących od agenta (np. niedostatecznego oświetlenia) stan cechy nie tylko może zostać błędnie ustalony, ale też stwierdzenie stanu tej cechy jest niemożliwe. Biorąc powyższe założenia pod uwagę pojedyncza cecha danego obiektu może mieć trzy stany: 
+	Założono, że narzędzia percepcyjne docelowego agenta umożliwiać będą zidentyfikowanie przynależność obiektu do danej klasy oraz bezpośrednią obserwację stanów tych cech w obiektach rzeczywistych. Zgodnie z wcześniejszym założeniem o możliwych różnicach między stanem świata postrzeganym przez agenta, a stanem faktycznym, zakłada się również, że w pewnych warunkach niezależących od agenta (np.\ braku dostatecznego oświetlenia) stan cechy nie tylko może zostać błędnie ustalony, ale też stwierdzenie stanu tej cechy jest niemożliwe. Biorąc powyższe założenia pod uwagę pojedyncza cecha danego obiektu może mieć trzy stany: 
 
 	\begin{itemize}
 	 	\setlength{\itemindent}{.5in}
@@ -53,14 +53,14 @@ Zewnętrznym światem rzeczywistym $ S $ projektowanego agenta jest dla niego ot
 	
 	Uporządkowane liniowo obserwacje stanu świata stanowią jedyne źródło subiektywnej wiedzy empirycznej (wiedzy opartej na doświadczeniu) agenta na temat świata. Wszelki brak wiedzy na temat cech obiektów w najnowszym (bieżącym) zaobserwowanym stanie świata, zostanie uzupełniony przez wbudowane procesy kognitywne. Tym samym wiedza agenta o stanie świata nie jest tożsama z jego wiedzą o bieżącym stanie świata.
 	
-	Kluczowym zadaniem realizowanego agenta jest wyrażenie treści subiektywnych przekonań na temat świata w sytuacji, gdy przeprowadzenie kompletnego oglądu, z różnych powodów, nie będzie możliwe.
+	Kluczowym zadaniem realizowanego agenta jest wyrażenie treści subiektywnych przekonań na temat świata w sytuacji, gdy przeprowadzenie kompletnego oglądu z różnych powodów nie będzie możliwe.
 	
 
-\section{Model epizodycznej bazy wiedzy}
+\section{Model epizodycznej bazy wiedzy (epizody)}
 
 Epizodyczna baza wiedzy jest enkapsulowaną w agencie prywatną bazą, stanowiącą podstawowy reprezentację wiedzy przechowywanej przez agenta na temat stanu zewnętrznego świata rzeczywistego. W dowolnym globalnym punkcie $ t^S $ zawiera tylko te obiekty, o których istnieniu fizycznym agent jest przekonany w punkcie $ t^S $.
 
-Baza zbudowana jest z uporządkowanych liniowo w czasie epizodów. Wiedza agenta w punkcie $ t $, składa się ze zbioru wszystkich epizodów e, dla których spełniona jest zależność $ t_e \le t $. 
+Baza zbudowana jest z uporządkowanych liniowo w czasie epizodów. Wiedza agenta w punkcie $ t $, składa się ze zbioru wszystkich epizodów $ e $, dla których spełniona jest zależność $ t_e \le t $. 
 
 Epizod dotyczący punktu w czasie $ t $ składa się z relacji 
 $ P^+{}_i $ oraz $ P^-{}_i $, 
@@ -75,7 +75,7 @@ $ P^+{}_i(t) \cap P^-{}_i(t) = \varnothing $
 dla każdej cechy $ P_i $ oraz czasu $ t $. Warunek ten jest obligatoryjny, gdyż nie spełnienie go prowadzi do sprzeczności w zasobach wiedzy agenta --- obiekt nie może jednocześnie mieć i nie mieć danej cechy.
 
 
-\section{Model semantycznej bazy wiedzy}
+\section{Model semantycznej bazy wiedzy (holony)}
 
 Kluczową rolę w tej pracy oraz w działaniu agenta odgrywa semantyczna baza wiedzy. Jest ona zróżnicowana pod względem funkcjonalnym i strukturalnym. Składają się na nią informacje o świecie, które zostały predefiniowane w agencie oraz takie, które agent samodzielnie zebrał.
 
@@ -92,9 +92,9 @@ Innym elementem semantycznej bazy wiedzy są tak zwane \textit{holony}. Biorąc 
 Przetwarzane zdania niosą ze sobą informacje o przekonaniach agenta na temat stanu świata. Zdanie może dotyczyć jednej cechy obiektu (holony proste), bądź współwystępowania dwóch cech (holony złożone). Dalej przybliżone zostaną podstawowe założenia odnoszące się do holonów prostych. Ich szczegółowy opis, a także innych rodzajów holonów można znaleźć w \cite{raport}.
 
 \begin{figure}  
-	\label{rys:holon}
-	\caption{Indukcja mentalnych modeli dla holonu prostego \cite{kat07}.}
 	\centering\includegraphics[width=.5\textwidth]{img/holon-modele-mentalne}
+	\caption{Indukcja mentalnych modeli dla holonu prostego \cite{kat07}}
+	\label{rys:holon}
 \end{figure}
 
 Podstawą do ugruntowania przekonań agenta na temat cechy $ P $ w obiekcie $ o $ są wyrażenia $ p(o) $ i $ \neg p(o) $. Modele mentalne widoczne na rysunku \ref{rys:holon} rozumiane są jako struktury odsyłające do epizodów przechowywanych w prywatnej bazie, które reprezentują zebrane przez agenta doświadczenia o obecności ($ m^a{}_1 $) albo braku ($ m^a{}_2 $) cechy $ P $ w obiekcie $ o $. Doświadczenia te nazwano zbiorami gruntującymi. Liczność tych zbiorów definiuje siłę ugruntowania przekonań --- częstsze obserwacje skutkują silniejszymi przekonaniami agenta. 

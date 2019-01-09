@@ -7,12 +7,13 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
-%%
 \usepackage[toc]{appendix}
 \renewcommand{\appendixtocname}{Dodatki}
 \renewcommand{\appendixpagename}{Dodatki}
 
-% pakiet do składu listingów w razie potrzeby można odblokować możliwość numerowania linii lub zmienić wielkość czcionki w listingu
+% pakiet do składu listingów 
+% w razie potrzeby można odblokować możliwość numerowania linii
+% lub zmienić wielkość czcionki w listingu
 \usepackage{minted}
 \setminted{breaklines,
 frame=lines,
@@ -43,15 +44,11 @@ fontsize=\small,
 \makeatother
 
 \usepackage{url}
-\usepackage{lipsum}
+\usepackage{amssymb}
 
 %END_FOLD
 
-\usepackage{amssymb}
-
-%\DeclareUnicodeCharacter{2208}{$\mathrm{\in}$}
-
-% Dane o pracy
+% Dane o pracy (strona tytułowa)
 \author{Mateusz Gawłowski}
 \title{Projekt i implementacja modułu ekstrakcji podsumowań danych w systemie autonomicznym}
 \titlen{Design and implementation of a module for extraction of data summaries by an autonomus system}
@@ -67,30 +64,24 @@ fontsize=\small,
 
 \tableofcontents
 
-% --- Strona ze streszczeniem i abstraktem ------------------------------------------------------------------
-\chapter*{Streszczenie} % po polsku
-% Wprowadzenie
+\chapter*{Streszczenie}
 
 <tekst>
 
 
-% Kilka sztuczek, żeby:
-% - Abstract pojawił się na tej samej stronie co Streszczenie
-% - Abstract nie pojawił się w spisie treści
 \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 \begingroup
 \renewcommand{\cleardoublepage}{}
 \renewcommand{\clearpage}{}
-\chapter*{Abstract} % ...i to samo po angielsku
+\chapter*{Abstract}
 
-<tekst>
+<streszczenie po ang.>
 
 
 \endgroup
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 % --- Koniec strony ze streszczeniem i abstraktem -----------------------------------------------------------
 
-% Rozdziały dołączone z zewnątrz
 \input{wstep}
 \input{rozdzial1}
 \input{rozdzial2}
