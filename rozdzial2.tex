@@ -40,7 +40,13 @@ W przypadku, gdy wiedza o aktualnym stanie świata jest niewystarczająco komple
 
 Przy czym to, który z nich zostanie użyty zależy od stopnia przekonania agenta oraz zdefiniowanych przez użytkownika progów modalności. Innymi słowy są to granice, które wyznaczają moment w którym agent interpretuje swoją wiedzę z mniejszym lub większym przekonaniem co do zgodności z rzeczywistością. Wpływ na to ma względna liczność poszczególnych zbiorów epizodów, reprezentujących relewantne doświadczenia z przeszłości (odnoszące się do danego obiektu i cech). Częstsze występowanie danej predykacji skutkuje silniejszymi przekonaniami agenta o możliwości jej wystąpienia w rzeczywistości.
 
-Strukturą wiedzy łączącą powiązane ze sobą i logicznie dopełniające się zbiory gruntujące jest holon. Zbiór holonów przynależy do wiedzy semantycznej agenta. Stworzone podczas gruntowania wiedzy holony przechowywane są w odpowiedniej kolekcji. Holon, jeśli jest aktualny, może zostać ponownie wykorzystany do bezpośredniego utworzenia zdania modalnego na temat obiektu oraz cech, których dotyczy. W przypadku, gdy nie jest aktualny, to w pierwotnej wersji aplikacji holon ten budowany jest od nowa.
+Strukturą wiedzy łączącą powiązane ze sobą i logicznie dopełniające się zbiory gruntujące jest holon. Zbiór holonów przynależy do wiedzy semantycznej agenta. Utworzone podczas gruntowania wiedzy holony przechowywane są w odpowiedniej kolekcji. Holon, jeśli jest aktualny, może zostać ponownie wykorzystany do bezpośredniego skonstruowania zdania modalnego na temat obiektu oraz cech, których dotyczy. W przypadku, gdy nie jest aktualny, to w pierwotnej wersji aplikacji holon ten budowany jest od nowa. Rozróżniane są holony proste dotyczące jednej cechy oraz holony złożone dotyczące współwystępowania dwóch cech. Zgodnie z rysunkiem \ref{rys:holony} przechowują one odpowiednio dwie i cztery wartości reprezentujące wszystkie kombinacje występowania cech $ p $ i $ q $.
+
+\begin{figure}  
+	\centering\includegraphics[width=.6\textwidth]{img/holony}
+	\caption{Budowa holonu prostego (po lewej) i złożonego (po prawej)}
+	\label{rys:holony}
+\end{figure}
 
 Aplikację agenta uruchomić można w trybie programowym. Przygotowany został do tego mechanizm przeprowadzania symulacji z użyciem plików w formacie CSV. Pozwala to na sprawne wczytanie do wiedzy agenta informacji o obiektach oraz obserwacji. Dodatkowo używając tego samego pliku po każdej wczytanej obserwacji mogą zostać sformułowane zapytania do agenta dotyczące stanu wiedzy po danej obserwacji. Pozwala to na prześledzenie zmian w przekonaniach agenta pod wpływem kolejnych obserwacji obiektów. Dodatkowo możliwe jest też ręczne wprowadzanie nowych obserwacji do bazy danych (pozwalają na to narzędzia niektórych środowisk programistycznych) oraz zadawanie pytań poprzez linię komend w trakcie działania agenta. 
 
@@ -87,12 +93,12 @@ Podstawowa wiedza agenta zbudowana jest z epizodów, wykorzystywane są one do g
 	\item cechy nieokreślone $ = $ \{ \{Kolorowy, \{1101\}\} \}.
 \end{itemize}  
 
-Użytkownik zadaje następujące pytanie agentowi: "Czy Foobar jest okrągły?". Pierwszą czynnością wykonywaną przez agenta jest zawsze sprawdzenie czy stan jego wiedzy jest aktualny. Innymi słowy czy w bazie danych są obserwacje, które nie zostały jeszcze wprowadzone do pamięci. Jeśli tak, agent najpierw przeprowadza aktualizację. W kolejnym kroku przeszukiwana jest wiedza agenta o bieżącym (najnowszym) stanie świata. W tym przypadku pozwala ona otrzymać bezpośrednią odpowiedź na zadane pytanie -- trzeci epizod (przedstawiony wcześniej) zawiera informacje o tym, że w obiekcie 1101 (nazwanym Foobar) występuje cecha "okrągły". Dzięki temu agent może od razu udzielić odpowiedź: "Wiem, że Foobar jest okrągły".
+Użytkownik zadaje następujące pytanie agentowi: "Czy Foobar jest okrągły?". Pierwszą czynnością wykonywaną przez agenta jest zawsze sprawdzenie czy stan jego wiedzy jest aktualny. Innymi słowy czy w bazie danych są obserwacje, które nie zostały jeszcze wprowadzone do pamięci. Jeśli tak, agent najpierw przeprowadza aktualizację. W kolejnym kroku przeszukiwana jest wiedza agenta o bieżącym (najnowszym) stanie świata. W tym przypadku pozwala ona otrzymać bezpośrednią odpowiedź na zadane pytanie -- trzeci epizod (przedstawiony wcześniej) zawiera informacje o tym, że w obiekcie 1101 (nazwanym Foobar) występuje cecha "okrągły". Dzięki temu agent może od razu udzielić odpowiedź: "Wiem, że Foobar jest okrągły.".
 
-Zanim użytkownik zada kolejne pytania, agent dwukrotnie dokonuje oglądu otoczenia. Nowe obserwacje (przedstawione w tabeli \ref{tab:obserwacje2}) wczytywane są do pamięci agenta. 
+Zanim użytkownik zada kolejne pytania, agent dwukrotnie dokonuje oglądu otoczenia. Nowe obserwacje (przedstawione w tabeli \ref{tab:obserwacje2}) wczytywane są do epizodycznej pamięci agenta. 
 
 \begin{table}[H]
-	\caption{Nowe obserwacje w bazie danych}
+	\caption{Nowe obserwacje w źródłowej bazie danych}
 	\label{tab:obserwacje2}
 	\centering
 	\begin{tabular}{|l|l|c|c|} \hline
@@ -103,7 +109,7 @@ Zanim użytkownik zada kolejne pytania, agent dwukrotnie dokonuje oglądu otocze
 	\end{tabular}
 \end{table}
 
-Użytkownik powtarza pytanie zadane wcześniej, które brzmiało: "Czy Foobar jest okrągły?". Tym razem sytuacja jest inna -- agent nie posiada żadnej wiedzy na temat bieżącego stanu tego obiektu. Tym samym agent zmuszony jest uzupełnić swoje przekonania procesem gruntowania wiedzy. Przetwarzanie rozpoczyna się od pobrania z kolekcji epizodów informacji odnoszących się do danego obiektu i cechy. W tym przypadku jest to Foobar (1101) i cecha "okrągły". Wynikiem procesu gruntowania będzie holon prosty, w którym zapisane zostaną następujące liczbowe wartości podsumowań:
+Użytkownik powtarza pytanie zadane wcześniej, które brzmiało: "Czy Foobar jest okrągły?". Tym razem sytuacja jest inna -- agent nie posiada żadnej wiedzy na temat bieżącego stanu tego obiektu. Nie istnieje też aktualny holon, który jest adekwatny do zadanego pytania. Tym samym agent zmuszony jest uzupełnić swoje przekonania procesem gruntowania wiedzy. Przetwarzanie rozpoczyna się od pobrania z kolekcji epizodów informacji odnoszących się do danego obiektu i cechy. W tym przypadku jest to Foobar (1101) i cecha "okrągły". Wynikiem procesu gruntowania będzie holon prosty, w którym zapisane zostaną następujące liczbowe wartości podsumowań:
 
 \begin{itemize}
 	\setlength{\itemindent}{.5in}
@@ -112,23 +118,46 @@ Użytkownik powtarza pytanie zadane wcześniej, które brzmiało: "Czy Foobar je
 	\item nieokrągły $ = \dfrac{1}{4} = 0,25 $,
 \end{itemize}  
 
-Otrzymane wartości odpowiadają kolejno operatorom modalnym \textit{BEL} i \textit{POS}. Zgodnie z nimi wyrażona przez agenta odpowiedź będzie brzmiała następująco: "Wierzę, że Foobar jest okrągły, ale możliwe, że nie jest okrągły".
+Otrzymane wartości odpowiadają kolejno operatorom modalnym \textit{BEL} i \textit{POS}. Zgodnie z nimi wyrażona przez agenta odpowiedź będzie brzmiała następująco: "Wierzę, że Foobar jest okrągły, ale możliwe, że jest nieokrągły.".
 
-% foobaz - koniunkcja
+Kolejne pytanie jest następujące: "Czy Foobaz jest okrągły i kolorowy?". Ponownie bezpośrednia odpowiedź nie jest możliwa, gdyż w epizodzie piątym jedna z cech w pytaniu jest nieokreślona. Nie istnieje też odpowiedni holon, agent przeprowadza więc gruntowanie wiedzy. Zadane pytanie dotyczy obiektu Foobaz (1102) oraz współwystępowania cech "okrągły" i "kolorowy". Agent przeprowadza ekstrakcję podsumowań z wcześniejszych epizodów (od znacznika czasu $ 1 $ do $ 4 $). W tym przypadku utworzony zostanie holon złożony. Wartości podsumowań są zgodne z danymi zawartymi w tabelach \ref{tab:obserwacje1} i \ref{tab:obserwacje2}:
+
+\begin{itemize}
+	\setlength{\itemindent}{.5in}
+	\item okrągły i kolorowy $ = \frac{1}{4} = 0,25 $,
+	\vspace{0.1in}
+	\item okrągły i niekolorowy $ = \dfrac{3}{4} = 0,75 $,
+	\vspace{0.1in}
+	\item nieokrągły i kolorowy $ = \dfrac{0}{4} = 0 $,
+	\vspace{0.1in}
+	\item nieokrągły i niekolorowy $ = \dfrac{0}{4} = 0 $,
+\end{itemize}  
+
+Odpowiedź agenta brzmi: "Możliwe, że Foobaz jest okrągły i kolorowy, ale jednak wierzę, że jest okrągły i niekolorowy.", zgodnie z operatorami modalnymi \textit{POS} i \textit{BEL}.
+
+W sytuacji gdy agent usłyszałby jeszcze raz któreś z dwóch ostatnich pytań przed dokonaniem nowych obserwacji, to możliwe byłoby skorzystanie z holonów obecnych w jego pamięci semantycznej. Przybycie nowych obserwacji oznaczałoby, że te holony są nieaktualne i ewentualne gruntowanie wymagałoby utworzenia nowych holonów, które zastąpiłyby te nieaktualne. To zachowanie przedstawia jeden z problemów, który powinien zostać rozwiązany w nowym module ekstrakcji podsumowań danych.
 
 
 \section{Przedstawienie problemu}
 
-<tekst>
+Ta praca dotyczy opracowania nowego modułu ekstrakcji podsumowań danych, czyli części aplikacji odpowiadającej za tworzenie i zarządzanie holonami. W tym rozdziale przedstawione zostaną wady obecnego rozwiązania, wpływające w stanowczy sposób na wydajność oraz funkcjonalność agenta.
+
+Podstawowym problemem jest fakt, że cała pamięć agenta jest tracona w momencie jego wyłączenia. Jest to bardzo niepożądane działanie niezgodne z ideą realizowanego kognitywnego agenta, który symulować ma procesy poznawcze przeprowadzane w ludzkim mózgu. Zgodnie z tą intencją ważne jest zachowywanie pamięci semantycznej, w taki sposób, żeby agent po ponownym uruchomieniu mógł wczytać do pamięci wszystkie utworzone wcześniej holony. W sensie ideowym takie zachowanie mogłoby zostać porównane do snu, podczas którego dochodzi do utrwalania pamięci.
+
+Kolejny problem ma duży wpływ na wydajność agenta. W obecnej aplikacji, gdy holon jest nieaktualny staje się on całkowicie zbędny. Wszystkie informacje, które przechowywał są tracone, a nowy holon dotyczący tych samych cech i obiektu jest budowany od podstaw. Naturalnym rozwiązaniem tego problemu jest opracowanie funkcji aktualizacji holonów. W przytoczonym wcześniej przykładowym scenariuszu działania agenta różnica w wydajności nie byłaby zauważalna. Był on jednak bardzo uproszczony. Rozważyć można bardziej skomplikowane, a tym samym bardziej prawdopodobne i realistyczne scenariusze, w których do czynienia mamy z o wiele większą ilością obiektów, cech i obserwacji. W przypadku dużej ilości danych funkcja aktualizacji będzie miała duży wpływ na wydajność i przyspieszy proces odpowiadania na pytanie.
+
+Obecnie cykl życia agenta jest bardzo prosty. W chwilach bezczynności (braku pytań od użytkownika) przeprowadza on jedynie aktualizację pamięci epizodycznej o nowe obserwacje. Jest to nieskomplikowany proces, który w rzeczywistym, docelowym trybie pracy uruchamiany będzie stosunkowo rzadko, bo po każdym wykonaniu pełnego oglądu otoczenia. Moduł, który rozwiąże opisane wcześniej problemy, otworzy nowe możliwości na poprawę pracy agenta. W wyniku tych zmian holony raz utworzone pozostaną w pamięci agenta oraz będą całkowicie wielokrotnego użytku dzięki możliwości ich aktualizacji. Pozwoli to na dodanie do cyklu życia agenta procesów odpowiadających za generowanie nowych oraz aktualizowanie istniejących holonów. Umożliwi to bardzo szybkie odpowiadanie na pytania, używając bezpośrednio podsumowań zawartych w wcześniej przygotowanych holonach.
 
 
 \section{Wymagania}
 
-\subsection{Funkcjonalne}
+Wymagania opracowano na podstawie przedstawionych wcześniej problemów. Dotyczą one jedynie opracowywanego modułu ekstrakcji podsumowań oraz ściśle związanymi z nim zmianami w cyklu życia agenta. Nowy moduł nie wprowadza nowych funkcji dostępnych dla użytkownika, skąd brak wymagań funkcjonalnych. Wyróżnione zostały następujące wymagania niefunkcjonalne:
 
-<tekst>
+\begin{enumerate}
+	\setlength{\itemindent}{.5in}
+	\item Generowanie holonów podczas bezczynności.
+	\item Aktualizowanie holonów podczas bezczynności.
+	\item Zapamiętywanie holonów poprzez mechanizm serializacji.
+	\item Wczytywanie zapamiętanych holonów podczas uruchamiania.
+\end{enumerate}  
 
-
-\subsection{Niefunkcjonalne}
-
-<tekst>

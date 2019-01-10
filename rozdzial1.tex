@@ -89,23 +89,19 @@ Innym elementem semantycznej bazy wiedzy są tak zwane \textit{holony}. Biorąc 
 	\item holony złożone do kodowania sensu modalnych koniunkcji.
 \end{enumerate}
 
-Przetwarzane zdania niosą ze sobą informacje o przekonaniach agenta na temat stanu świata. Zdanie może dotyczyć jednej cechy obiektu (holony proste), bądź współwystępowania dwóch cech (holony złożone). Dalej przybliżone zostaną podstawowe założenia odnoszące się do holonów prostych. Ich szczegółowy opis, a także innych rodzajów holonów można znaleźć w \cite{raport}.
+Przetwarzane zdania niosą ze sobą informacje o przekonaniach agenta na temat stanu świata. Zdanie może dotyczyć jednej cechy obiektu (holony proste/binarne), bądź współwystępowania dwóch cech (holony złożone/niebinarne). Dalej przybliżone zostaną podstawowe założenia odnoszące się do holonów prostych. Ich szczegółowy opis, a także innych rodzajów holonów można znaleźć w \cite{raport}.
 
 \begin{figure}  
 	\centering\includegraphics[width=.5\textwidth]{img/holon-modele-mentalne}
 	\caption{Indukcja mentalnych modeli dla holonu prostego \cite{kat07}}
-	\label{rys:holon}
+	\label{rys:holon-ment}
 \end{figure}
 
-Podstawą do ugruntowania przekonań agenta na temat cechy $ P $ w obiekcie $ o $ są wyrażenia $ p(o) $ i $ \neg p(o) $. Modele mentalne widoczne na rysunku \ref{rys:holon} rozumiane są jako struktury odsyłające do epizodów przechowywanych w prywatnej bazie, które reprezentują zebrane przez agenta doświadczenia o obecności ($ m^a{}_1 $) albo braku ($ m^a{}_2 $) cechy $ P $ w obiekcie $ o $. Doświadczenia te nazwano zbiorami gruntującymi. Liczność tych zbiorów definiuje siłę ugruntowania przekonań --- częstsze obserwacje skutkują silniejszymi przekonaniami agenta. 
+Podstawą do ugruntowania przekonań agenta na temat cechy $ P $ w obiekcie $ o $ są wyrażenia $ p(o) $ i $ \neg p(o) $. Modele mentalne widoczne na rysunku \ref{rys:holon-ment} rozumiane są jako struktury odsyłające do epizodów przechowywanych w prywatnej bazie, które reprezentują zebrane przez agenta doświadczenia o obecności ($ m^a{}_1 $) albo braku ($ m^a{}_2 $) cechy $ P $ w obiekcie $ o $. Doświadczenia te nazwano zbiorami gruntującymi. Liczność tych zbiorów definiuje siłę ugruntowania przekonań --- częstsze obserwacje skutkują silniejszymi przekonaniami agenta. 
 
 Siła przekonań, wyrażona jako względna moc zbioru gruntującego ma bezpośredni wpływ na modalność zdania wyrażającego przekonanie agenta. Holon, oprócz kodowania sensu zdań modalnych, jest więc także bezpośrednią reprezentacją powierzchniową przekonań agenta.
 
 Agent korzysta z holonów w sytuacjach, w których określenie stanu danej cechy w obiekcie rzeczywistym nie jest możliwe w oparciu o bieżący (najnowszy) epizod. Brak możliwości bezpośredniego stwierdzenia stanu cechy wypełniany jest przez agenta procesami gruntującymi, w wyniku których powstaje holon.
 
-Opracowanie nowego modułu zarządzania bazą semantyczną holonów jest tematem tej pracy.
-
-
-
-
+Opracowanie nowego modułu zarządzania bazą semantyczną holonów, która realizuje ekstrakcje podsumowań danych, jest tematem tej pracy.
 
