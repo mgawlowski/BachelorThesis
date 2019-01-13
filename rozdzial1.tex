@@ -3,20 +3,20 @@
 
 Tematyka pracy dotyczy dziedziny, która w literaturze określana jest terminem obliczeń kognitywnych (ang. \textit{cognitive computing}). Obejmuje ona inteligentne modele i metody obliczeniowe, które wyznaczają kierunek dalszego rozwoju systemów tak zwanych inteligencji wbudowanej oraz środowisk inteligentnych \cite{hur15}.
 
-Podstawą wspomnianej dziedziny jest upodabnianie funkcjonowania oprogramowania lub sprzętu do działania ludzkiego mózgu. Współczesne rozwiązania (takie jak np.\ Watson \cite{kel13}) korzystają z wielu zaawansowanych narzędzi do analizy i przetwarzania danych --- między innymi uczenie maszynowe, przetwarzanie języka naturalnego. Symulują w ten sposób działanie mózgu w oparciu o duże zbiory danych, aby w przyszłości podejmować nawet istotne decyzje medyczne \cite{woo15}. Takie podejście ignoruje jednak poznawczą naturę działania mózgu, skupiając się przede wszystkim na satysfakcjonujących rezultatach, a nie na próbach wiernego oddaniu sposobu w jaki funkcjonuje mózg, procesów myślowych i poznawczych.
+Podstawą wspomnianej dziedziny jest upodabnianie funkcjonowania oprogramowania lub sprzętu do działania ludzkiego mózgu. Współczesne rozwiązania (takie jak np.\ Watson \cite{kel13}) korzystają z wielu zaawansowanych narzędzi do analizy i przetwarzania danych --- między innymi uczenie maszynowe, przetwarzanie języka naturalnego. Symulują w ten sposób działanie mózgu w oparciu o duże zbiory danych, aby w przyszłości podejmować nawet istotne decyzje medyczne \cite{woo15}. Takie podejście ignoruje jednak poznawczą naturę działania mózgu, skupiając się przede wszystkim na satysfakcjonujących rezultatach, a nie na próbach wiernego oddaniu sposobu w jaki funkcjonuje mózg, procesów myślowych i~poznawczych.
 
-W odróżnieniu od wspomnianego podejścia rozwiązania zastosowane w aplikacji należą do obszaru określanego jako lingwistyka kognitywna. Tym samym pozostają w większym stopniu związane z pojęciem kognitywistyki samym w sobie. Jest to interdyscyplinarna dziedzina nauki z pogranicza między innymi filozofii, psychologii, sztucznej inteligencji i lingwistyki (określana także jako nauki kognitywne, poznawcze). Dotyczy ona obserwacji i analizy działania zmysłów, mózgu i umysłu oraz ich modelowania \cite{tha17}.
+W odróżnieniu od wspomnianego podejścia rozwiązania zastosowane w aplikacji należą do obszaru określanego jako lingwistyka kognitywna. Tym samym pozostają w większym stopniu związane z pojęciem kognitywistyki samym w sobie. Jest to interdyscyplinarna dziedzina nauki z pogranicza między innymi filozofii, psychologii, sztucznej inteligencji i~lingwistyki (określana także jako nauki kognitywne, poznawcze). Dotyczy ona obserwacji i analizy działania zmysłów, mózgu i umysłu oraz ich modelowania \cite{tha17}.
 
 W pracy, a także w całej aplikacji zaproponowana została oryginalna semantyka kognitywna. Pozostaje ona w zgodzie z ogólnie przyjętymi teoriami modalnego języka komunikacji \cite{tal00}, będących częścią lingwistyki kognitywnej. Zaproponowana implementacja systemu kognitywnego agenta jest w ścisłej relacji z formalną teorią kognitywną zaprezentowaną w \cite{kat07}. Zauważa się jednak brak publikacji bezpośrednio powiązanych z realizowanym systemem agentowym.
 
-W dalszej części tego rozdziału zawarto podstawowe wprowadzenie teoretyczne przybliżające zagadnienia i modele, na których opiera się aplikacja agenta oraz opracowany moduł zarządzania pamięcią semantyczną. Przedstawiono przede wszystkim te elementy projektowanego systemu agentowego (agenta i jego otoczenia), które są bezpośrednio powiązane z nowym modułem: model zewnętrznego względem agenta świata rzeczywistego i objętego jego działaniem obserwacyjnym, model enkapsulowanej (prywatnej) epizodycznej bazy wiedzy służącej do przechowywania pojedynczych obserwacji świata zewnętrznego oraz model semantycznej wiedzy agenta opartej na koncepcji holonów, jako oryginalne rozszerzenie reprezentujące wynik ekstrakcji podsumowań danych.
+W dalszej części tego rozdziału zawarto podstawowe wprowadzenie teoretyczne przybliżające zagadnienia i modele, na których opiera się aplikacja agenta oraz opracowany moduł zarządzania pamięcią semantyczną. Przedstawiono przede wszystkim te elementy projektowanego systemu agentowego (agenta i jego otoczenia), które są bezpośrednio powiązane z nowym modułem: model zewnętrznego względem agenta świata rzeczywistego i~objętego jego działaniem obserwacyjnym, model enkapsulowanej (prywatnej) epizodycznej bazy wiedzy służącej do przechowywania pojedynczych obserwacji świata zewnętrznego oraz model semantycznej wiedzy agenta opartej na koncepcji holonów, jako oryginalne rozszerzenie reprezentujące wynik ekstrakcji podsumowań danych.
 
 Szczegółowy opis wszystkich zagadnień i poszczególnych składowych opracowanego modelu można znaleźć w raporcie dotyczącym wspomnianej aplikacji \cite{raport}. Większość założeń funkcjonalnych przyjętych w projekcie, wprowadzona została we wcześniejszych pracach na temat przetwarzania modalnych języków komunikacji --- np.\ \cite{kat99} \cite{kat07}.
 
 
 \section{Model świata rzeczywistego}
 
-Zewnętrznym światem rzeczywistym $ S $ projektowanego agenta jest dla niego otoczenie, w którym został umieszczony, i który objęty jest przez niego aktywnością obserwacyjną. Głównym elementem świata oraz przedmiotem obserwacji są obiekty umieszczone w świecie $ S $. Dalej omówione zostały poszczególne elementy modelu.
+Zewnętrznym światem rzeczywistym $ S $ projektowanego agenta jest dla niego otoczenie, w którym został umieszczony, i który objęty jest przez niego aktywnością obserwacyjną. Głównym elementem świata oraz przedmiotem obserwacji są obiekty umieszczone w~świecie $ S $. Dalej omówione zostały poszczególne elementy modelu.
 
 
 	\subsection{Obiekty}
@@ -58,9 +58,9 @@ Zewnętrznym światem rzeczywistym $ S $ projektowanego agenta jest dla niego ot
 
 \section{Model epizodycznej bazy wiedzy (epizody)}
 
-Epizodyczna baza wiedzy jest enkapsulowaną w agencie prywatną bazą, stanowiącą podstawowy reprezentację wiedzy przechowywanej przez agenta na temat stanu zewnętrznego świata rzeczywistego. W dowolnym globalnym punkcie $ t^S $ zawiera tylko te obiekty, o których istnieniu fizycznym agent jest przekonany w punkcie $ t^S $.
+Epizodyczna baza wiedzy jest enkapsulowaną w agencie prywatną bazą, stanowiącą podstawowy reprezentację wiedzy przechowywanej przez agenta na temat stanu zewnętrznego świata rzeczywistego. W dowolnym globalnym punkcie $ t^S $ zawiera tylko te obiekty, o~których istnieniu fizycznym agent jest przekonany w punkcie $ t^S $.
 
-Baza zbudowana jest z uporządkowanych liniowo w czasie epizodów. Wiedza agenta w punkcie $ t $, składa się ze zbioru wszystkich epizodów $ e $, dla których spełniona jest zależność $ t_e \le t $. 
+Baza zbudowana jest z uporządkowanych liniowo w czasie epizodów. Wiedza agenta w~punkcie $ t $, składa się ze zbioru wszystkich epizodów $ e $, dla których spełniona jest zależność $ t_e \le t $. 
 
 Epizod dotyczący punktu w czasie $ t $ składa się z relacji 
 $ P^+{}_i $ oraz $ P^-{}_i $, 
@@ -79,7 +79,7 @@ dla każdej cechy $ P_i $ oraz czasu $ t $. Warunek ten jest obligatoryjny, gdy�
 
 Kluczową rolę w tej pracy oraz w działaniu agenta odgrywa semantyczna baza wiedzy. Jest ona zróżnicowana pod względem funkcjonalnym i strukturalnym. Składają się na nią informacje o świecie, które zostały predefiniowane w agencie oraz takie, które agent samodzielnie zebrał.
 
-Podstawowym elementem wiedzy semantycznej jest wiedza ontologiczna o świecie, czyli wiedza o strukturze rzeczywistości w jakiej będzie umieszczony agent. Zawarte w niej są informacje o klasach i cechach, z których są zbudowane. Wyznaczają one część świata rzeczywistego, który jest poznawczo dostępny dla agenta --- zdolny jest ją doświadczyć i zapisać w bazie epizodycznej. Ta część wiedzy jest niezmienna i predefiniowana (obecna w agencie od początku jego działania).
+Podstawowym elementem wiedzy semantycznej jest wiedza ontologiczna o świecie, czyli wiedza o strukturze rzeczywistości w jakiej będzie umieszczony agent. Zawarte w niej są informacje o klasach i cechach, z których są zbudowane. Wyznaczają one część świata rzeczywistego, który jest poznawczo dostępny dla agenta --- zdolny jest ją doświadczyć i~zapisać w bazie epizodycznej. Ta część wiedzy jest niezmienna i predefiniowana (obecna w agencie od początku jego działania).
 
 Innym elementem semantycznej bazy wiedzy są tak zwane \textit{holony}. Biorąc pod uwagę funkcjonalności realizowanego agenta kognitywnego są one kluczowe dla jego działania. \textit{Holon} jest strukturą ilustrującą sens oraz treść przetwarzanego zdania modalnego. W tej pracy rozważane będą dwa rodzaje holonów: 
 
@@ -101,7 +101,7 @@ Podstawą do ugruntowania przekonań agenta na temat cechy $ P $ w obiekcie $ o 
 
 Siła przekonań, wyrażona jako względna moc zbioru gruntującego ma bezpośredni wpływ na modalność zdania wyrażającego przekonanie agenta. Holon, oprócz kodowania sensu zdań modalnych, jest więc także bezpośrednią reprezentacją powierzchniową przekonań agenta.
 
-Agent korzysta z holonów w sytuacjach, w których określenie stanu danej cechy w obiekcie rzeczywistym nie jest możliwe w oparciu o bieżący (najnowszy) epizod. Brak możliwości bezpośredniego stwierdzenia stanu cechy wypełniany jest przez agenta procesami gruntującymi, w wyniku których powstaje holon.
+Agent korzysta z holonów w sytuacjach, w których określenie stanu danej cechy w~obiekcie rzeczywistym nie jest możliwe w oparciu o bieżący (najnowszy) epizod. Brak możliwości bezpośredniego stwierdzenia stanu cechy wypełniany jest przez agenta procesami gruntującymi, w wyniku których powstaje holon.
 
 Opracowanie nowego modułu zarządzania bazą semantyczną holonów, która realizuje ekstrakcje podsumowań danych, jest tematem tej pracy.
 

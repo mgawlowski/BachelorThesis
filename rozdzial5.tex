@@ -1,18 +1,31 @@
 \chapter{Testy}
 
-<tekst>
+Ten rozdział poświęcony zostanie testom przeprowadzonym z użyciem aplikacji, ze szczególnym naciskiem na nowy moduł ekstrakcji podsumowań danych. Zdecydowano pominąć testy jednostkowe ze względu na badawczo-naukową naturę tej aplikacji. Poprawność wykonywania można zweryfikować wykorzystując dalej opisane testy funkcjonalne. Przytoczone zostały również testy wydajnościowe, porównujące działanie aplikacji z nowym modułem, a tej z oryginalnym.
 
 
-\section{Testy jednostkowe}
+\section{Testy funkcjonalne}
 
-<tekst>
+Rolę testów funkcjonalnych spełniają opisane wcześniej scenariusze z użyciem plików CSV. Ten rodzaj testów nazywa się "testami czarnej skrzynki", a oznacza to, że nie śledzimy sposobu wykonywania poszczególnych komponentów. Jedyne co jest znane to wejście i~oczekiwane wyjście.
+
+Przeprowadzono wiele testów używając przygotowanych wcześniej scenariuszy. Przykładowy przebieg użycia scenariusz został przedstawiony w poprzednim rozdziale.
 
 
 \section{Testy wydajnościowe}
 
-<tekst>
+Wykonane testy polegały na porównaniu wydajności między aplikacją oryginalną a~aplikacją z nowym modułem opracowanej w ramach tej pracy. Test opierał się na scenariuszu z 50 obserwacjami. Pytania były trzy -- rozmieszczone w taki sposób, aby wykorzystać różne funkcje systemu. Wyniki przedstawione są w \ref{tab:testy} (średnia z dziesięciu przebiegów).
 
+\begin{table}[H]
+	\caption{Wyniki testów wydajnościowych ekstrakcji podsumowań danych}
+	\label{tab:testy}
+	\centering
+	\begin{tabular}{|l|l|c|c|} \hline
+		\textbf{L.p.} & \textbf{Holon} & \textbf{Stary moduł} & \textbf{Nowy moduł} \\ \hline
+		1  &  utworzyć  &  $ 0,74s $  &  $ 0,21s $  \\ \hline
+		2  &  znaleźć  &  $ 0,00s $  &  $ 0,00s $  \\ \hline
+		3  &  zaktualizować  &  $ 0,73s $  &  $ 0,01s $  \\ \hline
+	\end{tabular}
+\end{table}
 
-\section{Pokrycie testowe}
+Warto zauważyć jak duży wpływ na wydajność ma nowy moduł pod względem aktualizacji holonów. Oryginalnie za każdym razem holon budowany był od podstawy, więc "aktualizacja" zajmuje po prostu tyle samo co utworzenie nowego holonu. W przypadku opracowanego modułu widać, że aktualizacja trwa o wiele krócej od tworzenia holonu.
 
-<tekst>
+Najszybciej jednak uzyskamy odpowiedź gdy odpowiedni holon jest już w pamięci oraz jest aktualny. Dzięki temu widać jak duże znaczenie ma generowanie i aktualizowanie holonów podczas bezczynności. Dodatkowo nowy proces aktualizacji pozwala na zachowanie aktualności dużej ilości holonów jednocześnie.
